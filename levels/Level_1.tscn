@@ -7,4 +7,5 @@
 ]]
 script = ExtResource( 1 )
 hint_text = "Make a loop"
+description = "Click to place 3 nodes"
 node_count = 3

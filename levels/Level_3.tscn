@@ -12,6 +12,7 @@ __meta__ = {
 "_edit_vertical_guides_": [ -0.0207062, 160.0 ]
 }
 hint_text = "Collect the coins"
+description = "Loop through all the coins"
 node_count = 4
 
 [node name="Coin" parent="." instance=ExtResource( 1 )]

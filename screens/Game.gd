@@ -43,7 +43,6 @@ func _process(_delta):
 	$"Loop Count Label".text = str("Level ", level_number, ": ", level.hint_text)
 	$"Loop Count Label".hide()
 	$"Description Label".text = level.description
-	$"Description Label".hide()
 	$Control/Loops.text = str(loops_completed, "/", level.required_loops_completed)
 	$Control/Nodes.text = str($"Movement Nodes".get_child_count(), "/", level.node_count)
 	
