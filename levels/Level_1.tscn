@@ -1,0 +1,10 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://scenes/Level.gd" type="Script" id=1]
+
+[node name="Level 1" type="Node2D" groups=[
+"level",
+]]
+script = ExtResource( 1 )
+hint_text = "Make a loop"
+node_count = 3

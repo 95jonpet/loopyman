@@ -1,0 +1,175 @@
+[gd_scene load_steps=18 format=2]
+
+[ext_resource path="res://fonts/Kenney Blocks.ttf" type="DynamicFontData" id=1]
+[ext_resource path="res://screens/Game.gd" type="Script" id=2]
+[ext_resource path="res://levels/Level_0.tscn" type="PackedScene" id=3]
+[ext_resource path="res://sound/action_denied.wav" type="AudioStream" id=4]
+[ext_resource path="res://sound/node_passed.wav" type="AudioStream" id=5]
+[ext_resource path="res://sound/loop_completed.wav" type="AudioStream" id=6]
+[ext_resource path="res://sound/node_placed.wav" type="AudioStream" id=7]
+[ext_resource path="res://fonts/Kenney Mini.ttf" type="DynamicFontData" id=8]
+[ext_resource path="res://sprites/loops_symbol.png" type="Texture" id=9]
+[ext_resource path="res://sprites/nodes_symbol.png" type="Texture" id=10]
+[ext_resource path="res://sprites/coins_symbol.png" type="Texture" id=11]
+[ext_resource path="res://sound/game_over.wav" type="AudioStream" id=12]
+[ext_resource path="res://sound/level_completed.wav" type="AudioStream" id=13]
+[ext_resource path="res://sound/song_20201004_130853_827.wav" type="AudioStream" id=14]
+
+[sub_resource type="DynamicFont" id=1]
+size = 8
+font_data = ExtResource( 1 )
+
+[sub_resource type="DynamicFont" id=2]
+size = 8
+font_data = ExtResource( 8 )
+
+[sub_resource type="DynamicFont" id=3]
+size = 8
+font_data = ExtResource( 8 )
+
+[node name="Game" type="Node2D"]
+script = ExtResource( 2 )
+__meta__ = {
+"_edit_vertical_guides_": [  ]
+}
+
+[node name="Camera" type="Camera2D" parent="."]
+anchor_mode = 0
+current = true
+zoom = Vector2( 0.25, 0.25 )
+
+[node name="Level" parent="." instance=ExtResource( 3 )]
+
+[node name="Movement Nodes" type="Node" parent="."]
+
+[node name="Loop Count Label" type="Label" parent="."]
+margin_right = 160.0
+margin_bottom = 12.0
+grow_horizontal = 2
+custom_fonts/font = SubResource( 1 )
+custom_colors/font_color = Color( 0.796078, 0.835294, 0.878431, 1 )
+text = "Loop count"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Description Label" type="Label" parent="."]
+margin_top = 92.0
+margin_right = 160.0
+margin_bottom = 116.0
+grow_horizontal = 2
+custom_fonts/font = SubResource( 2 )
+custom_colors/font_color = Color( 0.796078, 0.835294, 0.878431, 1 )
+text = "Level Description"
+align = 1
+valign = 2
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Music" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 14 )
+volume_db = -2.0
+autoplay = true
+
+[node name="ActionDeniedSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 4 )
+
+[node name="NodePassedSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 5 )
+
+[node name="LoopCompletedSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 6 )
+
+[node name="NodePlacedSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 7 )
+
+[node name="GameOverSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 12 )
+
+[node name="LevelCompletedSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 13 )
+
+[node name="Control" type="Control" parent="."]
+margin_right = 160.0
+margin_bottom = 120.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="LoopsSymbol" type="TextureRect" parent="Control"]
+margin_left = 2.0
+margin_top = 2.0
+texture = ExtResource( 9 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Loops" type="Label" parent="Control"]
+margin_left = 12.0
+margin_top = 1.0
+custom_fonts/font = SubResource( 3 )
+custom_colors/font_color = Color( 1, 1, 1, 1 )
+text = "1/2"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="NodesSymbol" type="TextureRect" parent="Control"]
+margin_left = 2.0
+margin_top = 12.0
+margin_right = 10.0
+margin_bottom = 20.0
+texture = ExtResource( 10 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Nodes" type="Label" parent="Control"]
+margin_left = 12.0
+margin_top = 11.0
+margin_right = 26.0
+margin_bottom = 11.0
+custom_fonts/font = SubResource( 3 )
+custom_colors/font_color = Color( 1, 1, 1, 1 )
+text = "1/2"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="CoinsSymbol" type="TextureRect" parent="Control"]
+margin_left = 2.0
+margin_top = 22.0
+margin_right = 10.0
+margin_bottom = 20.0
+texture = ExtResource( 11 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Coins" type="Label" parent="Control"]
+margin_left = 12.0
+margin_top = 21.0
+margin_right = 26.0
+margin_bottom = 21.0
+custom_fonts/font = SubResource( 3 )
+custom_colors/font_color = Color( 1, 1, 1, 1 )
+text = "1/2"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="LevelName" type="Label" parent="Control"]
+margin_left = 100.0
+margin_top = 2.0
+margin_right = 156.0
+margin_bottom = 12.0
+custom_fonts/font = SubResource( 3 )
+custom_colors/font_color = Color( 1, 1, 1, 1 )
+text = "Level 1"
+align = 2
+__meta__ = {
+"_edit_use_anchors_": false
+}
+[connection signal="finished" from="Music" to="Music" method="play"]

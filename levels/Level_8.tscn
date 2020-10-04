@@ -1,0 +1,33 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://scenes/Level.gd" type="Script" id=1]
+[ext_resource path="res://scenes/Coin.tscn" type="PackedScene" id=2]
+[ext_resource path="res://scenes/Timed Blocker.tscn" type="PackedScene" id=4]
+
+[node name="Level 8" type="Node2D" groups=[
+"level",
+]]
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_horizontal_guides_": [ 0.0, 120.393 ],
+"_edit_vertical_guides_": [ 0.0, 160.0 ]
+}
+node_count = 4
+required_loops_completed = 2
+
+[node name="Coin" parent="." instance=ExtResource( 2 )]
+position = Vector2( 80, 64 )
+
+[node name="Timed Blocker" parent="." instance=ExtResource( 4 )]
+position = Vector2( 80, 80 )
+
+[node name="Timed Blocker2" parent="." instance=ExtResource( 4 )]
+position = Vector2( 80, 48 )
+
+[node name="Timed Blocker3" parent="." instance=ExtResource( 4 )]
+position = Vector2( 64, 64 )
+active = true
+
+[node name="Timed Blocker4" parent="." instance=ExtResource( 4 )]
+position = Vector2( 96, 64 )
+active = true

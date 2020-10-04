@@ -1,0 +1,67 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://scenes/Coin.tscn" type="PackedScene" id=1]
+[ext_resource path="res://scenes/Level.gd" type="Script" id=2]
+[ext_resource path="res://scenes/Wall.tscn" type="PackedScene" id=3]
+
+[node name="Level 4" type="Node2D" groups=[
+"level",
+]]
+script = ExtResource( 2 )
+__meta__ = {
+"_edit_horizontal_guides_": [ 0.0, 119.799 ],
+"_edit_vertical_guides_": [ -0.0207062, 160.0 ]
+}
+hint_text = "Loop it"
+node_count = 7
+
+[node name="Wall" parent="." instance=ExtResource( 3 )]
+position = Vector2( 32, 64 )
+
+[node name="Wall2" parent="." instance=ExtResource( 3 )]
+position = Vector2( 48, 64 )
+
+[node name="Wall3" parent="." instance=ExtResource( 3 )]
+position = Vector2( 64, 64 )
+
+[node name="Wall4" parent="." instance=ExtResource( 3 )]
+position = Vector2( 32, 48 )
+
+[node name="Wall12" parent="." instance=ExtResource( 3 )]
+position = Vector2( 16, 64 )
+
+[node name="Wall5" parent="." instance=ExtResource( 3 )]
+position = Vector2( 32, 80 )
+
+[node name="Wall13" parent="." instance=ExtResource( 3 )]
+position = Vector2( 0, 64 )
+
+[node name="Wall6" parent="." instance=ExtResource( 3 )]
+position = Vector2( 112, 64 )
+
+[node name="Wall7" parent="." instance=ExtResource( 3 )]
+position = Vector2( 128, 64 )
+
+[node name="Wall8" parent="." instance=ExtResource( 3 )]
+position = Vector2( 144, 64 )
+
+[node name="Wall9" parent="." instance=ExtResource( 3 )]
+position = Vector2( 144, 48 )
+
+[node name="Wall11" parent="." instance=ExtResource( 3 )]
+position = Vector2( 160, 64 )
+
+[node name="Wall10" parent="." instance=ExtResource( 3 )]
+position = Vector2( 144, 80 )
+
+[node name="Coin" parent="." instance=ExtResource( 1 )]
+position = Vector2( 48, 80 )
+
+[node name="Coin2" parent="." instance=ExtResource( 1 )]
+position = Vector2( 128, 48 )
+
+[node name="Coin3" parent="." instance=ExtResource( 1 )]
+position = Vector2( 48, 32 )
+
+[node name="Coin4" parent="." instance=ExtResource( 1 )]
+position = Vector2( 128, 96 )

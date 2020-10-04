@@ -1,0 +1,26 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://scenes/Vehicle.gd" type="Script" id=1]
+[ext_resource path="res://sprites/vehicle.png" type="Texture" id=2]
+
+[sub_resource type="CapsuleShape2D" id=1]
+radius = 4.0
+height = 3.0
+
+[node name="Vehicle" type="KinematicBody2D" groups=[
+"vehicle",
+]]
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="Sprite" type="Sprite" parent="."]
+texture = ExtResource( 2 )
+
+[node name="Tween" type="Tween" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+rotation = 1.5708
+shape = SubResource( 1 )
+[connection signal="tween_completed" from="Tween" to="." method="_on_Tween_tween_completed"]

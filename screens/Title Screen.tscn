@@ -1,0 +1,106 @@
+[gd_scene load_steps=7 format=2]
+
+[ext_resource path="res://fonts/Kenney Blocks.ttf" type="DynamicFontData" id=1]
+[ext_resource path="res://fonts/Kenney Mini.ttf" type="DynamicFontData" id=2]
+[ext_resource path="res://screens/Title Screen.gd" type="Script" id=4]
+
+[sub_resource type="DynamicFont" id=1]
+size = 56
+font_data = ExtResource( 1 )
+
+[sub_resource type="DynamicFont" id=2]
+font_data = ExtResource( 2 )
+
+[sub_resource type="Animation" id=3]
+resource_name = "Blink"
+length = 2.0
+tracks/0/type = "value"
+tracks/0/path = NodePath("Menu/Hints:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.75, 1.25, 2 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
+}
+
+[node name="Title Screen" type="Control"]
+mouse_filter = 2
+script = ExtResource( 4 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Menu" type="VBoxContainer" parent="."]
+margin_left = 128.0
+margin_top = 64.0
+margin_right = 512.0
+margin_bottom = 416.0
+mouse_filter = 2
+custom_constants/separation = 32
+alignment = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Title" type="Label" parent="Menu"]
+margin_top = 52.0
+margin_right = 384.0
+margin_bottom = 136.0
+custom_fonts/font = SubResource( 1 )
+text = "Loopyman"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Hints" type="VBoxContainer" parent="Menu"]
+modulate = Color( 1, 1, 1, 0 )
+margin_top = 168.0
+margin_right = 384.0
+margin_bottom = 224.0
+mouse_filter = 2
+custom_constants/separation = 16
+
+[node name="PlayHint" type="Label" parent="Menu/Hints"]
+margin_right = 384.0
+margin_bottom = 20.0
+custom_fonts/font = SubResource( 2 )
+text = "Click to play"
+align = 1
+valign = 2
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="RestartHint" type="Label" parent="Menu/Hints"]
+margin_top = 36.0
+margin_right = 384.0
+margin_bottom = 56.0
+custom_fonts/font = SubResource( 2 )
+text = "Press <R> to restart levels"
+align = 1
+valign = 2
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Credits" type="Label" parent="Menu"]
+margin_top = 256.0
+margin_right = 384.0
+margin_bottom = 299.0
+custom_fonts/font = SubResource( 2 )
+text = "Made by Peter Jonsson for Ludum Dare 47
+www.peterjonsson.se"
+align = 1
+valign = 2
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+anims/Blink = SubResource( 3 )
+[connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_AnimationPlayer_animation_finished"]
