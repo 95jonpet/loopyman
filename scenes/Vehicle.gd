@@ -2,6 +2,7 @@ extends KinematicBody2D
 
 signal loop_completed()
 signal node_reached(node)
+signal killed()
 
 export var speed = 32
 onready var movement_nodes = $"../Movement Nodes"
@@ -29,6 +30,10 @@ func start_moving_toward_next_node():
 	# Start moving toward next node..
 	$Tween.interpolate_property(self, "position", last_node.position, next_node.position, duration, Tween.TRANS_LINEAR, Tween.EASE_IN_OUT)
 	$Tween.start()
+
+func kill():
+	stop()
+	emit_signal("killed")
 
 func stop():
 	$Tween.stop_all()

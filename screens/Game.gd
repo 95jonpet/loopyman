@@ -63,12 +63,7 @@ func _ready():
 func _draw():
 	if can_place_movement_node():
 		draw_grid_around_mouse()
-	
 	draw_movement_node_connections()
-
-func _on_entity_killed(entity: Node):
-	if entity == vehicle:
-		game_over()
 
 func _on_Vehicle_loop_completed():
 	loops_completed += 1
@@ -130,8 +125,6 @@ func draw_movement_node_connections():
 func set_level(new_level):
 	level = new_level
 	$Control/LevelName.text = str("Level ", level_number)
-	for killingEntity in get_tree().get_nodes_in_group("killing_entities"):
-		killingEntity.connect("entity_killed", self, "_on_entity_killed")
 
 func reset_level():
 	loops_completed = 0
@@ -150,8 +143,9 @@ func scene_unloaded():
 func spawn_vehicle():
 	vehicle = VEHICLE.instance()
 	add_child(vehicle)
-	vehicle.connect("loop_completed", self, "_on_Vehicle_loop_completed")
-	vehicle.connect("node_reached", $NodePassedSound, "play")
-	vehicle.connect("loop_completed", $LoopCompletedSound, "play")
+	assert(vehicle.connect("loop_completed", self, "_on_Vehicle_loop_completed") == OK)
+	assert(vehicle.connect("killed", self, "game_over") == OK)
+	assert(vehicle.connect("node_reached", $NodePassedSound, "play") == OK)
+	assert(vehicle.connect("loop_completed", $LoopCompletedSound, "play") == OK)
 	vehicle.start_moving_toward_next_node()
 	vehicle.show()

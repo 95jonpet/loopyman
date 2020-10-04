@@ -26,9 +26,13 @@ func change_scene(path: String, old_level: Node, label: String = "", delay: floa
 	emit_signal("scene_unloaded")
 	
 	var new_level = load(path).instance()
-	for child in old_level.get_children():
-		child.queue_free()
-	old_level.replace_by(new_level)
+	var parent = old_level.get_parent()
+	var pos_in_parent = old_level.get_position_in_parent()
+	parent.call_deferred("remove_child", old_level)
+	yield(old_level, "tree_exited")
+	parent.call_deferred("add_child", new_level)
+	yield(new_level, "tree_entered")
+	parent.move_child(new_level, pos_in_parent)
 	emit_signal("scene_replaced", new_level)
 	
 	yield(get_tree().create_timer(0.5), "timeout")

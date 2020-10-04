@@ -8,7 +8,14 @@ func _ready():
 func _input(event):
 	if event.is_action_pressed("mouse_left"):
 		var game = GAME_SCENE.instance()
-		$".".replace_by(game)
+		
+		var parent = get_parent()
+		var pos_in_parent = get_position_in_parent()
+		parent.remove_child(self)
+		parent.add_child(game)
+		parent.move_child(game, pos_in_parent)
+		
+		#$".".replace_by(game)
 
-func _on_AnimationPlayer_animation_finished(anim_name):
+func _on_AnimationPlayer_animation_finished(_anim_name):
 	$AnimationPlayer.play("Blink")
